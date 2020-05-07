@@ -3,7 +3,7 @@ SOURCE=src/life.c
 STATE=state.txt
 
 CC=gcc
-CFLAGS=-std=c89 -Wall -Wextra -O2
+CFLAGS=-std=gnu99 -Wall -Wextra -O2
 LDFLAGS=-lncurses
 
 .PHONY: all, clean

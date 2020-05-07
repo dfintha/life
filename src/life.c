@@ -1,21 +1,22 @@
 #include <curses.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
 #define BOARD_WIDTH  80
 #define BOARD_HEIGHT 20
-#define BOARD_MEMORY_SIZE (BOARD_WIDTH * BOARD_HEIGHT * sizeof(int))
+#define BOARD_MEMORY_SIZE (BOARD_WIDTH * BOARD_HEIGHT * sizeof(bool))
 
-int state[BOARD_WIDTH][BOARD_HEIGHT];
+bool state[BOARD_WIDTH][BOARD_HEIGHT];
 
 static void tick(void) {
-    int x, y, n;
-    int next[BOARD_WIDTH][BOARD_HEIGHT];
-    int north, east, south, west;
+    int n;
+    bool next[BOARD_WIDTH][BOARD_HEIGHT];
+    bool north, east, south, west;
 
-    for (x = 0; x < BOARD_WIDTH; ++x) {
-        for (y = 0; y < BOARD_HEIGHT; ++y) {
+    for (int x = 0; x < BOARD_WIDTH; ++x) {
+        for (int y = 0; y < BOARD_HEIGHT; ++y) {
             n = 0;
 
             west = (x > 0);
@@ -40,9 +41,8 @@ static void tick(void) {
 }
 
 static void draw(void) {
-    int x, y;
-    for (x = 0; x < BOARD_WIDTH; ++x) {
-        for (y = 0; y < BOARD_HEIGHT; ++y) {
+    for (int x = 0; x < BOARD_WIDTH; ++x) {
+        for (int y = 0; y < BOARD_HEIGHT; ++y) {
             mvaddch(y, x, state[x][y] ? 'X' : ' ');
         }
     }
