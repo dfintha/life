@@ -1,0 +1,10 @@
+Conway's Game of Life
+=====================
+Surprisingly, only after all this time, this is my very first implementation
+of Conway's Game of Life. The simulation area is 80x20 characters. The software
+uses the ncurses library.
+
+The initial state of the simulation is stored in a file named 'state.txt', where
+the 'X' character means a living cell, and a whitespace means a dead cell. All
+other characters are omitted.
+
